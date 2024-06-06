@@ -138,7 +138,8 @@ book* Add_new_book(book* head, MYSQL* mysql)
 	//将新增书籍信息存入数据库
 	char sql[256];
 	sprintf(sql, "insert into book values('%d','%s','%s','%s','%f','%d')",
-		newbook->B_ID, newbook->B_NAME, newbook->Author, newbook->Publish, newbook->Price, newbook->Quantity);
+		newbook->B_ID, newbook->B_NAME, newbook->Author, newbook->Publish,
+		newbook->Price, newbook->Quantity);
 	mysql_query(mysql, sql);
 
 	newbook->next = NULL;
@@ -276,7 +277,8 @@ void Search_book(book* head)
 				{
 					flag = 0;
 					printf("-----------------------------------------------------------------------------------\n");
-					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n", p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
+					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n",
+						p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
 				}
 				break;
 			case 2:
@@ -284,7 +286,8 @@ void Search_book(book* head)
 				{
 					flag = 0;
 					printf("-----------------------------------------------------------------------------------\n");
-					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n", p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
+					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n", 
+						p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
 				}
 				break;
 			case 3:
@@ -292,7 +295,8 @@ void Search_book(book* head)
 				{
 					flag = 0;
 					printf("-----------------------------------------------------------------------------------\n");
-					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n", p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
+					printf("|%-24s|%-16s|%-16s|%-6.2f|%-6d|%-8d|\n", 
+						p->B_NAME, p->Author, p->Publish, p->Price, p->Quantity, p->B_ID);
 				}
 				break;
 			}

@@ -95,15 +95,12 @@ Test02()
 	user* user_head = NULL;
 	manager* manager_head = NULL;
 
-
+	
 	book_head = load_Book(book_head, res, row, con);
 	user_head = load_User(user_head, res, row, con);
 	manager_head = load_Manager(manager_head, res, row, con);
 
 	//Ö÷Ìå
-
-
-	
 	int input = 0;
 	do
 	{
