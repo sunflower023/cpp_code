@@ -34,6 +34,13 @@ string myadd(int a, int b)
 	return to_string(a) + to_string(b);
 }
 
+//内联函数
+inline int Getmax(int a, int b, int c)
+{
+	return a > b ? (a > c ? a : c) : (b > c ? b : c);
+}
+
+
 int main()
 {
 	//输出
@@ -67,9 +74,13 @@ int main()
 	//swap(a, d);
 	//cout << "a = " << a << " d = " << d << endl;
 
-	cout << myadd(520, 1314) << endl;
-	cout << myadd("i love", 1) << endl;
-	cout << myadd("i love", "you") << endl;
+	////函数重载
+	//cout << myadd(520, 1314) << endl;
+	//cout << myadd("i love", 1) << endl;
+	//cout << myadd("i love", "you") << endl;
+
+	//cout << "max = " << Getmax(1, 2, 3) << endl;
+	//cout << "max = " << Getmax(55, 33, 11) << endl;
 
 
 	return 0;
