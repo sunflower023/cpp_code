@@ -41,6 +41,47 @@ inline int Getmax(int a, int b, int c)
 }
 
 
+//类
+class book
+{
+private:
+	string name;
+	int count = 0;
+public:
+	//构造函数的重载
+	book()
+	{
+		name = "NULL";
+	}
+
+	book(string name)
+	{
+		this->name = name;
+	}
+	~book() {}
+
+	string get_name()
+	{
+		return name;
+	}
+
+	int get_count()
+	{
+		return count;
+	}
+
+	void set_count(const int x)
+	{
+		count = x;
+	}
+
+};
+
+
+
+
+
+
 int main()
 {
 	//输出
@@ -82,6 +123,10 @@ int main()
 	//cout << "max = " << Getmax(1, 2, 3) << endl;
 	//cout << "max = " << Getmax(55, 33, 11) << endl;
 
+	book book1("c++");
+	cout << book1.get_name() << endl;
+	book1.set_count(55);
+	cout << book1.get_count() << endl;
 
 	return 0;
 }
