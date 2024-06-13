@@ -77,10 +77,149 @@ public:
 
 };
 
+//class human
+//{
+//private:
+//public:
+//	human() {};
+//	~human() {};
+//	virtual void say() { cout << "i am human" << endl; }
+//};
+
+//class student :public human
+//{
+//private:
+//public:
+//	virtual void say() { cout << "i am student" << endl; }
+//};
+//
+//class college :public student
+//{
+//private:
+//public:
+//	void say() { cout << "i am college" << endl; }
+//};
+//
+//
+//void test01()
+//{
+//	human man;
+//	man.say();
+//	student s;
+//	s.say();
+//	college c;
+//	c.say();
+//}
 
 
+class shape
+{
+public:
+	//纯虚函数声明
+	virtual float getC() = 0;
+	virtual float getS() = 0;
+};
+
+class circle :public shape
+{
+private:
+	float r;
+public:
+	circle(float x)
+	{
+		r = x;
+	}
+
+	float getC()
+	{
+		return 2 * 3.14 * r;
+	}
+	float getS()
+	{
+		return 3.14 * r * r;
+	}
+};
+
+void test02()
+{
+	circle c1(3.0f);
+	cout << c1.getC() << endl;
+	cout << c1.getS() << endl;
+}
+
+class human
+{
+public:
+	virtual void say() = 0;
+};
 
 
+//多态的实现
+class man :public human
+{
+public:
+	void say() { cout << "man!" << endl; }
+};
+
+class woman :public human
+{
+public:
+	void say() { cout << "woman!" << endl; }
+};
+
+void func(human* h)
+{
+	h->say();
+}
+
+void test03()
+{
+	man m1, m2;
+	woman w1, w2;
+	func(&m1);
+	func(&w2);
+}
+
+
+//模版
+template<typename T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+
+void test04()
+{
+	cout << add<int>(5, 6) << endl;
+	cout << add<float>(4.5f, 8.8f) << endl;
+	cout << add<string>("hello ", "world") << endl;
+}
+
+
+class student
+{
+private:
+	string name;
+	int score;
+public:
+	student(string n, int s) { name = n, score = s; }
+
+	friend ostream& operator << (ostream& o, student s);
+
+};
+
+ostream& operator << (ostream& o, student s)
+{
+	cout << s.name << " " << s.score << endl;
+	return o;
+}
+
+void test05()
+{
+	student s("zyh", 100);
+	cout << s << endl;
+}
 
 int main()
 {
@@ -123,10 +262,15 @@ int main()
 	//cout << "max = " << Getmax(1, 2, 3) << endl;
 	//cout << "max = " << Getmax(55, 33, 11) << endl;
 
-	book book1("c++");
+	/*book book1("c++");
 	cout << book1.get_name() << endl;
 	book1.set_count(55);
-	cout << book1.get_count() << endl;
+	cout << book1.get_count() << endl;*/
 
+	//test01();
+	//test02();
+	//test03();
+	//test04();
+	test05();
 	return 0;
 }
