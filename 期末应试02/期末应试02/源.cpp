@@ -22,7 +22,7 @@ public:
 	//}
 
 	//сят╙
-	friend ostream& operator<<(ostream& o, person& p);
+	//friend ostream& operator<<(ostream& o, person& p);
 
 };
 
