@@ -85,10 +85,57 @@ void test03()
 
 void test04()
 {
-	string s1("hello");
+	/*string s1("hello");
 	string s2;
 	s2 = s1.substr(0, 3);
-	cout << s2 << endl;
+	cout << s2 << endl;*/
+	/*string s("abcdefg");
+	reverse(s.end()-3, s.end()-1);
+	cout << s << endl;*/
+
+	class Solution {
+	public:
+		string reverseStr(string s, int k) {
+			int cnt = 1;
+			int i = 0;
+			while (i < s.size())
+			{
+				if (cnt % (2 * k) == 0)
+				{
+					//确保iterator不能<0,哪怕是中间结果，vs会assert报错
+					cout << i << "/" << cnt << endl;
+					auto p1 = s.begin() + 1 + i - 2 * k ;
+					auto p2 = s.begin() + i + 1 - k;
+					cout << i - 2 * k + 1 << "/" << i - k + 1 << endl;
+					reverse(p1,p2);
+				}
+
+				i++;
+				cnt++;
+			}
+			cnt--;
+			cout << cnt << endl;
+			if (cnt % (2 * k) >= k)
+			{
+				cout << i << "/" << cnt << endl;
+				//cout<<2*k+1<<"/"<<-k+1<<endl;
+				auto p1 = s.end() - k - 1;
+				auto p2 = s.end() - 1;
+				
+				reverse(p1, p2);
+			}
+			// if(cnt & (2*k) < k)
+			// {
+			//     reverse(s.end())
+			// }
+			return s;
+		}
+	};
+	Solution so;
+	string s("abcd");
+	cout << so.reverseStr(s, 4) << endl;
+	//reverse(s.begin() + 0, s.begin() + 2);
+	//cout << s << endl;
 }
 
 int main()
@@ -97,7 +144,7 @@ int main()
 	//test02();
 	//test03();
 	//test04();
-	string strText = "How are you?";
+	/*string strText = "How are you?";
 
 	string strSeparator = " ";
 
@@ -134,6 +181,12 @@ int main()
 	size_t t1 = -1;
 	size_t t2 = 0;
 	cout << (t1 > t2) << endl;
-	cout << INT_MAX << endl;
+	cout << INT_MAX << endl;*/
+	string s("abcdefg");
+	//reverse(s.begin() + 0, s.begin() + 2);
+	//s.resize(7, 'x');
+	//s.insert(7, 1,'x');
+	s.erase(2, 2);
+	cout << s << endl;
 	return 0;
 }
