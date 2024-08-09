@@ -111,31 +111,56 @@ using namespace std;
 //    free(ptr3);
 //}
 
+//class A
+//{
+//public:
+//	A(int a = 0)
+//		:_a(a)
+//	{
+//		cout << "A(int a)" << endl;
+//	}
+//
+//	~A()
+//	{
+//		cout << "~A()" << endl;
+//	}
+//
+//private:
+//	int _a;
+//};
+//
+//int main()
+//{
+//	A* p1 = new A;
+//	delete(p1);
+//	cout << "-------------------------" << endl;
+//	A* p2 = new A[5];
+//	delete[](p2);
+//
+//	return 0;
+//}
+
 class A
 {
 public:
 	A(int a = 0)
-		:_a(a)
-	{
-		cout << "A(int a)" << endl;
-	}
-
+		: _a(a)
+	{}
 	~A()
-	{
-		cout << "~A()" << endl;
-	}
+	{}
 
 private:
-	int _a;
+	int _a = 1;
 };
-
+class B
+{
+private:
+	int _b = 2;
+};
 int main()
 {
-	A* p1 = new A;
-	delete(p1);
-	cout << "-------------------------" << endl;
-	A* p2 = new A[5];
-	delete[](p2);
-
-	return 0;
+	A* p1 = new A[10];
+	B* p2 = new B[10];
+	delete[] p1;
+	delete p2;
 }
