@@ -52,12 +52,12 @@ namespace zyh
 		_str = tmp;
 		_size = 0;
 	}
-	void string::swap(string& s)
+	/*void string::swap(string& s)
 	{
 		string tmp = s;
 		s = *this;
 		*this = tmp;
-	}
+	}*/
 	
 	void string::resize(size_t n, char c)
 	{
@@ -235,14 +235,18 @@ namespace zyh
 		cout << s2.c_str() << endl;*/
 
 		string s1("bbcdefg");
-		string s2("abcdefg");
+		string s2(s1);
 		//reverse(s.begin() + 0, s.begin() + 2);
 		//s2.insert(7,'x');
 		//s2.erase(2, 2);
-		cout << s2.c_str() << endl;
+		//cout << s2.c_str() << endl;
+		cout << s1 << endl;
+		//cin >> s2;
 		cout << s2 << endl;
-		cin >> s2;
-		cout << s2 << endl;
+		s1[0] = '0';
 
+		s1.swap(s2);
+		cout << s1 << endl;
+		cout << s2 << endl;
 	}
 }

@@ -140,27 +140,69 @@ using namespace std;
 //	return 0;
 //}
 
-class A
-{
-public:
-	A(int a = 0)
-		: _a(a)
-	{}
-	~A()
-	{}
+//
+//class A
+//{
+//public:
+//	A(int a = 0)
+//		: _a(a)
+//	{}
+//	~A()
+//	{}
+//
+//private:
+//	int _a = 1;
+//};
+//class B
+//{
+//private:
+//	int _b = 2;
+//};
+//int main()
+//{
+//	A* p1 = new A[10];
+//	B* p2 = new B[10];
+//	delete[] p1;
+//	delete p2;
+//}
 
-private:
-	int _a = 1;
-};
-class B
-{
-private:
-	int _b = 2;
-};
+//auto add(int x, double y)->double
+//{
+//	return x + y;
+//}
+
+
+//auto Add()
+//{
+//	
+//}
+//int main()
+//{
+//	//auto a = Add();
+//	//auto b = Add();
+//	//cout << typeid(a).name() << endl;
+//	//cout << typeid(b).name() << endl;
+//
+//	return 0;
+//}
+
 int main()
 {
-	A* p1 = new A[10];
-	B* p2 = new B[10];
-	delete[] p1;
-	delete p2;
+	string s1("test.c");
+	//得到文件后缀
+	size_t pos1 = s1.find('.');
+	if (pos1 != string::npos)
+	{
+		string ret1 = s1.substr(pos1);
+		cout << ret1 << endl;
+	}
+	//如果文件名含有.怎么办
+	string s2("te.st.c");
+	size_t pos2 = s2.rfind('.');
+	if (pos2 != string::npos)
+	{
+		string ret2 = s2.substr(pos2);
+		cout << ret2 << endl;
+	}
+	return 0;
 }

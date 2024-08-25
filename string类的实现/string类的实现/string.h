@@ -25,12 +25,24 @@ namespace zyh
 			strcpy(_str, str);
 		}
 
-		string(const string& s)
+		/*string(const string& s)
 		{
 			_size = s._size;
 			_capacity = s._capacity;
 			_str = new char[_capacity + 1];
 			strcpy(_str, s._str);
+		}*/
+		void swap(string& s)
+		{
+			std::swap(_str, s._str);
+			std::swap(_size, s._size);
+			std::swap(_capacity, s._capacity);
+		}
+
+		string(const string& s)
+		{
+			string tmp(s._str);
+			swap(tmp);
 		}
 
 		string& operator=(const string& s)
@@ -96,7 +108,7 @@ namespace zyh
 		void append(const char* str);
 		string& operator+=(const char* str);
 		void clear();
-		void swap(string& s);
+		//void swap(string& s);
 		
 		//capacity
 		size_t size()const
