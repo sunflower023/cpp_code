@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<iostream>
 #include<vector>
+#include<list>
 #include<algorithm>
 using namespace std;
 
@@ -124,45 +125,164 @@ using namespace std;
 	//cout << endl;
 
 //}
-int main(int argc, char* argv[])
+//int main(int argc, char* argv[])
+//
+//{
+//
+//	string strText = "How are you?";
+//
+//	string strSeparator = " ";
+//
+//	string strResult;
+//
+//	int size_pos = 0;
+//
+//	int size_prev_pos = 0;
+//
+//	while ((size_pos = strText.find_first_of(strSeparator, size_pos)) != string::npos)
+//
+//	{
+//
+//		strResult = strText.substr(size_prev_pos, size_pos - size_prev_pos);
+//
+//		cout << strResult << " ";
+//
+//		size_prev_pos = ++size_pos;
+//
+//	}
+//
+//	if (size_prev_pos != strText.size())
+//
+//	{
+//
+//		strResult = strText.substr(size_prev_pos, size_pos - size_prev_pos);
+//
+//		cout << strResult << " ";
+//
+//	}
+//
+//	cout << endl;
+//
+//	return 0;
+//
+//}
 
+//int main()
+//{
+	/*vector<int> v;
+	for (size_t i = 1; i < 5; i++)
+	{
+		v.push_back(i);
+	}
+	auto pos = find(v.begin(), v.end(), 3);
+	v.insert(pos, 30);
+	v.insert(pos, 40);*/
+
+	//vector<int> v{ 1,2,3,4,5,6 };
+	//auto it = v.begin();
+
+	////将有效元素增加到20个，多余的用0填充，操作期间底层扩容
+	//v.resize(20, 0);
+	////改变容量大小为20，可能会进行扩容而引起底层改变
+	//v.reserve(20);
+
+	////插入元素，可能会进行扩容
+	//v.push_back(8);
+	//v.insert(v.begin(), 0);
+
+	////给vector重新赋值，可能会引起底层容量改变
+	//v.assign(20, 9);
+
+	////以上操作都会导致先前的迭代器it失效
+	////解决方法就是完成上述操作后更新迭代器it
+	////若在此不更新就会出错
+	//it = v.begin();
+	//while (it != v.end())
+	//{
+	//	cout << *it << " ";
+	//	it++;
+	//}
+	//cout << endl;
+
+	//vector<int> v{ 1,2,3,4 };
+	//auto pos = find(v.begin(), v.end(), 3);//找到3的位置
+	//v.erase(pos);//删除3
+	//cout << *pos << endl;//再次解引用就会报错
+
+	//vector<int> v{ 1, 2, 3, 4, 4, 6};
+	//auto it = v.begin();
+	//while (it != v.end())
+	//{
+	//	if (*it % 2 == 0)
+	//	{
+	//		//erase返回的是删除位置的下一个元素的位置的迭代器
+	//		//这里就直接利用erase的返回值进行更新
+	//		it = v.erase(it);
+	//	}
+	//	else
+	//	{
+	//		it++;
+	//	}
+	//}
+	//for (auto e : v)
+	//{
+	//	cout << e << " ";
+	//}
+	//cout << endl;
+
+	
+
+	//return 0;
+//}
+
+int main()
 {
+	//list<int> l1;//无参构造
+	//list<int> l2(10, 1);//用10个1初始化链表
 
-	string strText = "How are you?";
+	//vector<int> v{ 1,2,3,4,5 };
+	//list<int> l3(v.begin(), v.end());//用迭代器区间初始化
 
-	string strSeparator = " ";
+	//head 1 2 3
+	/*list<int> l{ 1,2,3};
+	auto it1 = l.begin();
+	auto it2 = --l.end();
+	auto it3 = l.rbegin();
+	auto it4 = --l.rend();
 
-	string strResult;
+	cout << *it1 << endl;
+	cout << *it2 << endl;
+	cout << *it3 << endl;
+	cout << *it4 << endl;*/
 
-	int size_pos = 0;
+	//vector<int> v{ 1,2,3,4,5,6,7,8 };
+	//list<int> l(v.begin(), v.end());
+	////list<int> l{ 1,2,3,4,5,6,7,8 };
 
-	int size_prev_pos = 0;
+	//for (auto e : l)
+	//{
+	//	cout << e << " ";
+	//}
+	//cout << endl;
 
-	while ((size_pos = strText.find_first_of(strSeparator, size_pos)) != string::npos)
-
+	list<int> l{ 1,2,3,4,5,6,7,8,9 };
+	auto it = l.begin();
+	while (it != l.end())
 	{
-
-		strResult = strText.substr(size_prev_pos, size_pos - size_prev_pos);
-
-		cout << strResult << " ";
-
-		size_prev_pos = ++size_pos;
-
+		if (*it % 2 == 0)
+		{
+			it = l.erase(it);
+		}
+		else
+		{
+			++it;
+		}
 	}
-
-	if (size_prev_pos != strText.size())
-
+	for (auto e : l)
 	{
-
-		strResult = strText.substr(size_prev_pos, size_pos - size_prev_pos);
-
-		cout << strResult << " ";
-
+		cout << e << " ";
 	}
-
 	cout << endl;
 
 	return 0;
-
 }
-

@@ -65,8 +65,12 @@ namespace zyh
 		}
 
 		//拷贝构造
-		vector(const vector<T>& v)
+		vector(const vector& v)
+			:_start(nullptr)
+			, _finish(nullptr)
+			, _end_of_storage(nullptr)
 		{
+			//易错点：这里并没有进行初始化
 			reserve(v.size());
 			for (auto e : v)
 			{
@@ -81,25 +85,17 @@ namespace zyh
 		//}
 
 		//赋值重载
-		void swap(vector<T>& v)
+		void swap(vector& v)
 		{
 			std::swap(_start, v._start);
 			std::swap(_finish,v._finish);
 			std::swap(_end_of_storage, v._end_of_storage);
 		}
-		vector& operator=(vector<T>& v)
+		//为什么不加const?要交换内部内容肯定要能修改啊
+		vector& operator=(vector v)
 		{
 			swap(v);
 			return *this;
-		}
-
-		~vector()
-		{
-			if (_start)
-			{
-				delete[] _start;
-				_start = _finish = _end_of_storage = nullptr;
-			}
 		}
 
 		//capacity
@@ -197,6 +193,15 @@ namespace zyh
 			--_finish;
 		}
 		
+		~vector()
+		{
+			if (_start)
+			{
+				delete[] _start;
+				_start = _finish = _end_of_storage = nullptr;
+			}
+		}
+
 	private:
 		iterator _start = nullptr;
 		iterator _finish = nullptr;
@@ -207,7 +212,7 @@ namespace zyh
 	void print_vector(const vector<T>& v)
 	{
 		//规定，从没有实例化的类模版中取东西
-		//编译器不能区分const_iterator是类型还是静态成员变量
+		//编译器不能区分const_iterator是类型还是静态成员变量，因此要加typename
 		//当然也可以更简单写为auto it  = v.begin();
 		typename vector<T>::const_iterator it = v.begin();
 		while (it != v.end())
@@ -263,12 +268,9 @@ namespace zyh
 
 	void vector_test3()
 	{
-		vector<int> v1(5, 1);
-		print_container(v1);
-		
-		v1.resize(10, 2);
-		print_container(v1);
-		v1.erase(v1.begin() + 9);
-		print_container(v1);
+		vector<int> v1(2, 1);
+		vector<int> v2;
+		v2 = v1;
+		print_container(v2);
 	}
 }
