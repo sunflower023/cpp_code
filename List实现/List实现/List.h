@@ -97,14 +97,34 @@ namespace zyh
 			empty_init();
 		}
 
-		list(const list<T>& x)
+		//迭代器区间构造
+		template<class InputIterator>
+		list(InputIterator first, InputIterator last)
+		{
+			empty_init();
+			while (first != last)
+			{
+				push_back(*first);
+				++first;
+			}
+		}
+
+		list(const list& x)
+		{
+			empty_init();
+			list tmp(x.begin(), x.end());
+			std::swap(_head, tmp._head);
+			std::swap(_size, tmp._size);
+		}
+
+		/*list(const list<T>& x)
 		{
 			empty_init();
 			for (auto e : x)
 			{
-				push_back(x);
+				push_back(e);
 			}
-		}
+		}*/
 
 		void swap(list<T>& l)
 		{
@@ -162,12 +182,12 @@ namespace zyh
 
 			Node* newnode = new Node(x);
 			newnode->_prev = prev;
-			prev->_next = newnode;
 			newnode->_next = next;
+			prev->_next = newnode;
 			next->_prev = newnode;
 			++_size;
 
-			return newnode;
+			return iterator(newnode);
 		}
 
 		iterator erase(iterator pos)
@@ -180,7 +200,7 @@ namespace zyh
 
 			delete pos._node;
 			--_size;
-			return next;
+			return iterator(next);
 		}
 
 		void pop_back()
@@ -266,5 +286,26 @@ namespace zyh
 			cout << e << " ";
 		}
 		cout << endl;
+	}
+
+
+	void print(const list<int>& l)
+	{
+		for (auto e : l)
+		{
+			cout << e << " ";
+		}
+		cout << endl;
+	}
+
+	void List_test3()
+	{
+		list<int> l1;
+		l1.push_back(1);
+		l1.push_back(2);
+		l1.push_back(3);
+		l1.insert(++l1.begin(), 4);
+
+		print(l1);
 	}
 }

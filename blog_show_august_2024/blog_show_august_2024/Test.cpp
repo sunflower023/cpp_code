@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 #include<list>
+#include<queue>
 #include<algorithm>
 using namespace std;
 
@@ -235,8 +236,8 @@ using namespace std;
 	//return 0;
 //}
 
-int main()
-{
+//int main()
+//{
 	//list<int> l1;//无参构造
 	//list<int> l2(10, 1);//用10个1初始化链表
 
@@ -265,7 +266,7 @@ int main()
 	//}
 	//cout << endl;
 
-	list<int> l{ 1,2,3,4,5,6,7,8,9 };
+	/*list<int> l{ 1,2,3,4,5,6,7,8,9 };
 	auto it = l.begin();
 	while (it != l.end())
 	{
@@ -282,7 +283,162 @@ int main()
 	{
 		cout << e << " ";
 	}
-	cout << endl;
+	cout << endl;*/
 
-	return 0;
+
+//	return 0;
+//}
+
+//namespace zyh
+//{
+//	//本质是一个类
+//	class Person
+//	{
+//	public:
+//		bool operator()(int x, int y)
+//		{
+//			return x < y;
+//		}
+//	};
+//
+//
+//
+//
+//
+//	class Student : public Person
+//	{
+//	public:
+//		int _stuid;
+//	};
+//}
+//
+//int main()
+//{
+//	//zyh::less fun;
+//	//cout << fun(1, 2) << endl;
+//
+//	//升序写法
+//	vector<int> v{ 1,2,3,4,5 };
+//	sort(v.begin(), v.end());
+//	sort(v.begin(), v.end(), greater<int>());
+//
+//
+//	priority_queue<int, vector<int>, greater<int>> p;
+//	p.push(1);
+//	p.push(2);
+//	p.push(3);
+//	p.push(4);
+//	p.push(5);
+//	p.push(6);
+//
+//	while (!p.empty())
+//	{
+//		cout << p.top() << " ";
+//		p.pop();
+//	}
+//	cout << endl;
+//
+//	return 0;
+//}
+
+
+//class person
+//{
+//public:
+//	person(const char* name = "Jack")
+//		:_name(name)
+//	{
+//		cout << "person()" << endl;
+//	}
+//
+//	person(const person& p)
+//		:_name(p._name)
+//	{
+//		cout << "person(const person& p)" << endl;
+//	}
+//
+//	person& operator=(const person& p)
+//	{
+//		cout << "person operator=()" << endl;
+//		if (this != &p)
+//		{
+//			_name = p._name;
+//		}
+//		return *this;
+//	}
+//
+//	~person()
+//	{
+//		cout << "~person" << endl;
+//	}
+//protected:
+//	string _name;
+//};
+//
+//class student :public person
+//{
+//public:
+//	student(const char* name,int num)
+//		:person(name)
+//		,_num(num)
+//	{
+//		cout << "student()" << endl;
+//	}
+//
+//	student(const student& s)
+//		:person(s)
+//		,_num(s._num)
+//	{
+//		cout << "student(const student& s)" << endl;
+//	}
+//
+//	student& operator=(const student& s)
+//	{
+//		cout << "student operator=()" << endl;
+//		if (this != &s)
+//		{
+//			person::operator=(s);
+//			_num = s._num;
+//		}
+//		return *this;
+//	}
+//
+//	~student()
+//	{
+//		cout << "~student()" << endl;
+//	}
+//
+//protected:
+//	int _num;//学号
+//};
+//
+//int main()
+//{
+//	student s1("Peter", 18);
+//	student s2(s1);
+//	s1 = s2;
+//	return 0;
+//}
+
+class A
+{
+public:
+	int _a1;
+	friend void print(B& bb);
+protected:
+	int _a2;
+};
+
+class B:public A
+{
+public:
+	int _b1;
+protected:
+	int _b2;
+};
+
+void print(B& bb)
+{
+	cout << bb._a1;
+	cout << bb._a2;
 }
