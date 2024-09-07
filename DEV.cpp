@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string> 
+#define endl '\n'
 using namespace std;
 
 class time
@@ -151,9 +152,18 @@ int main()
 	//test01();
 	
 	//ÔËËã·ûÖØÔØ
-	test02();
+	//test02();
 	 
 	 //test03();
+	 
+	int i = 0;
+	for(int i = 1;i<10;i++)
+	{
+		for(int j = 0;j<3;j++)
+		{
+			cout<< i << j << endl;
+		}
+	}
 	 
 	return 0;
 }
