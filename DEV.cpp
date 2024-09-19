@@ -156,14 +156,7 @@ int main()
 	 
 	 //test03();
 	 
-	int i = 0;
-	for(int i = 1;i<10;i++)
-	{
-		for(int j = 0;j<3;j++)
-		{
-			cout<< i << j << endl;
-		}
-	}
+	printf("%d\n",(-5)%3);
 	 
 	return 0;
 }
